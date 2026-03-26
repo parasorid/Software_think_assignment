@@ -1,0 +1,5 @@
+a, b = input().split()
+n1 = int(a, 2)
+n2 = int(b, 2)
+ans = bin(n1+n2)
+print(ans[2:])
