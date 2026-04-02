@@ -1,6 +1,9 @@
-forsum = []
-for i in range(0, int(input())):
-    n = int(input())
-    if n != 0: forsum.append(n)
-    else: del forsum[len(forsum)-1]
-print(sum(forsum))
+n = int(input())
+result = 0
+befsum = 0
+uinput = list(map(int,input().split()))
+uinput.sort()
+for i in range(0, n):
+    result += uinput[i] * i - befsum
+    befsum += uinput[i]
+print(2 * result)
