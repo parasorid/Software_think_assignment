@@ -1,17 +1,18 @@
-import sys
-apply_student = {}
-input = sys.stdin.readline
-jw, trm = map(int,input().split())
-for i in range(0, trm):
-    temp = input()
-    if temp in apply_student:
-        del apply_student[temp]
-        apply_student[temp] = 1
-    else:
-        apply_student[temp] = 1
-for key in apply_student:
-    if jw >= 1:
-        print(key, end="")
-        jw -=1
-    if jw == 0:
-        break
+import math
+def isprime(n):
+    for i in range(2, int(math.sqrt(n)+1)):
+        if n % i == 0:
+            return(int(0))
+    return(n)
+n = int(input())
+m = int(input())
+m, n = int(max(m, n)), int(min(m, n))
+primelist = []
+if n <= 1:
+    n = int(2)
+for k in range(n, m+1):
+    if isprime(k) == k:
+        primelist.append(k)
+if len(primelist) <= 0:
+    print(-1)
+else: print(sum(primelist),"\n", min(primelist), sep="")
