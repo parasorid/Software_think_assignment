@@ -1,6 +1,6 @@
 import sys
-apply_student = {}
 input = sys.stdin.readline
+apply_student = {}
 jw, trm = map(int,input().split())
 for i in range(0, trm):
     temp = input()
