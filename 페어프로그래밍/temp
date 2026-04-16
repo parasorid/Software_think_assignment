@@ -13,52 +13,26 @@ puzzle = [
         [9,6,0,1,0,0,4,7,5]
     ]
 
-# 좌표의 위치에 들어갈 수 있는지 판독하는 함수
-def is_valid(board, row, col, num):
-    if (row >9 or col >9):
-        exit()
-    garo = puzzle[row]
-    sero = []
-    board3 = []
-    for i in range(9):
-        sero.append(puzzle[i][col])
-    if row in set([0, 1, 2]):
-        if col in set([0, 1, 2]):
-            for i in range(0, 3):
-                for j in range(0, 3):
-                    board3.append(board[i][j])
-    for k in range(0, 9):
-        if k not in garo:
-            if k not in sero:
-                if k not in board3:
-                    board[row][col] = k
-                    is_valid(board, row, col, board[row][col])
-                else:
-                    pass
-            else:
-                pass
-        else: pass
-is_valid(puzzle, 1, 2, puzzle[1][2])
-for i in range(9):
-    print(puzzle[i])
+def is_valid(board,row,col,num):
+    # 특정 위치에 숫자를 넣을 수 있는지 검사합니다
+    # 가로행에 num이 있는지 검사하고
+    # 세로 행에 num이 있는지 검사하고
+    # 3*3 박스 범위 안에 같은 수가 있는지 검사합나디
+    #셋중 하나에라도 문제가 생긴다면 그 즉시 Error를 Return 합니다
 
-# 재귀와 백 트래킹을 이용해서 스도쿠를 해결하는 함수
+    # board = 전체 스도쿠
+    # row는  x좌표, col는 y좌표
+    # num = 1부터 row, col, 3x3에 값이 있는지 확인, num+=1 해가면서
+    # 
+
+
 def solve_sudoku(board):
-    print(1)
+    #재귀와 백트래킹을 사용하여 스도쿠를 해결합니다
+    #9 * 9 배열에 빈칸을 찾아 가능한 숫자를 넣고 재귀적으로 다음칸에 넣습니다
+    # 넣을수가 없으면 이전 스텝에 문제가 있었으므로 backtraking
+    # 모든칸이 채워지면 성공
 
-#그냥 단순히 해답을 출력하는 함수
-def print_board(board):
-    print(1)
+    # 가능한 num이 발견되면 board[row][col] = num
+    # is_valid(board, row+1, col+1, 1)
 
-
-#그냥 풀이 가능한지 확인하기
-"""if solve_sudoku(puzzle):
-    print_board(puzzle)
-else:
-    print("해답따위 없다.")
-
-for i in range(9):
-    for j in range(9):
-        num = puzzle[i][j]
-        if num == 0:
-            is_valid(what, i, j, num)"""
+def: print_board(board)
