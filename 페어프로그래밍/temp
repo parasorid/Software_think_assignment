@@ -23,7 +23,7 @@ def is_valid(board,row,col,num):
     # board = 전체 스도쿠
     # row는  x좌표, col는 y좌표
     # num = 1부터 row, col, 3x3에 값이 있는지 확인, num+=1 해가면서
-    # 
+    #
 
 
 def solve_sudoku(board):

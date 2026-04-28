@@ -2,7 +2,17 @@ tfa = [0,1,2],[3,4,5], [6,7,8]
 puzzle = []
 for i in range(9):
     puzzle.append(list(map(int,input().split())))
+
 def board_33(board, row, col):
+    board33 = []
+    g, s  = (row//3) *3, (col//3) *3
+    for i in range(3):
+        for j in range(3):
+            board33.append(board[i+g][j+s])
+    return board33
+
+
+"""def board_33(board, row, col):
     board33 = []
     g, s = 0, 0
     for i, sublist in enumerate(tfa):
@@ -16,7 +26,7 @@ def board_33(board, row, col):
     for i in tfa[g]:
         for j in tfa[s]:
             board33.append(board[i][j])
-    return board33
+    return board33"""
 
 def is_valid(board,row,col,num):
     if num < 1 or num > 9:
@@ -26,16 +36,10 @@ def is_valid(board,row,col,num):
     sero = []
     for i in range(0, 9):
         sero.append(board[i][col])
-    if num not in garo:
-        if num not in sero:
-            if num not in board33:
-                return True
-            else:
-                return False
-        else:
-            return False
-    else:
+    if num in garo or num in sero or num in board33:
         return False
+    else:
+        return True
 
 def solve_sudoku(board):
     for i in range(0, 9):
