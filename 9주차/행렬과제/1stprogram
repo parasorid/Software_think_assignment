@@ -1,0 +1,42 @@
+import random
+"""    1보다 크고 5보다 작거나 같은 N을 입력받아
+    1. N x N 행렬 세개 A, B, C를 곱하고 더하는, 즉, A x B + C 하는 프로그램"""
+def gscal(n): #1
+    rl = []
+    tl = []
+    A, B, C = gsmaker(n),gsmaker(n),gsmaker(n)
+    print("컴퓨터가 랜덤으로 호출해낸 행렬 3개는 다음과 같습니다.")
+    print("A")
+    gsprint(n, A)
+    print("B")
+    gsprint(n, B)
+    print("C")
+    gsprint(n, C)
+    print("결과물")
+    for i in range(n):
+        tl = []
+        for j in range(n):
+            tn = 0
+            for k in range(n):
+                tn += A[i][k] * B[k][j]
+            tl.append(tn+C[i][j])
+        rl.append(tl)
+    return rl
+def gsmaker(n): #3
+    ttl = []
+    tl = []
+    for i in range(n):
+        ttl = []
+        for j in range(n):
+            ttl.append(random.randrange(1, n*n*10))
+        tl.append(ttl)
+    return tl
+def gsprint(n, tlist): #4
+    for i in range(n):
+        for j in range(n):
+            print(f"{tlist[i][j]:7d}", end = " ")
+        print()
+
+n = int(input())
+
+gsprint(n, gscal(n))

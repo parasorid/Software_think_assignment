@@ -25,7 +25,6 @@ def gscal(n): #1
             tl.append(tn+C[i][j])
         rl.append(tl)
     return rl
-
 def gsts(n, nlist): #2
     tl = []
     rl = []
@@ -39,13 +38,11 @@ def gsmaker(n): #3
     ttl = []
     tl = []
     for i in range(n):
+        ttl = []
         for j in range(n):
             ttl.append(random.randrange(1, n*n*10))
         tl.append(ttl)
-        ttl = []
-
     return tl
-
 def gsprint(n, tlist): #4
     for i in range(n):
         for j in range(n):
