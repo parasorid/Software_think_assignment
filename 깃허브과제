@@ -1,0 +1,44 @@
+import os
+
+pwd = "."
+dir1 = input("첫번째 대조군이 존재하는 경로를 입력하십시오. : ")
+dir2 = input("두번째 대조군이 존재하는 경로를 입력하십시오. : ")
+
+def get_files(path):
+    files = []
+    for entry in os.scandir(path):
+        if entry.is_file():
+            files.append({
+                "name": entry.name,
+                "size": entry.stat().st_size,
+                "path": entry.path
+            })
+    return files
+
+files1 = get_files(dir1)
+files2 = get_files(dir2)
+
+
+if len(files1) != len(files2):
+    print("파일 수가 다릅니다.")
+else:
+    files1.sort(key=lambda f: f["name"])
+    files2.sort(key=lambda f: f["name"])
+    for i in range(len(files1)):
+        if files1[i]["name"] != files2[i]["name"]:
+            print("이름이 같지 않습니다.")
+        elif files1[i]["size"] != files2[i]["size"]:
+            print("크기가 같지 않습니다.")
+        else:
+            with open(files1[i]["path"], "rb") as f1:
+                content1 = f1.read()
+            with open(files2[i]["path"], "rb") as f2:
+                content2 = f2.read()
+
+            if content1 != content2:
+                print("내용이 같지 않습니다.")
+            else:
+                    print(files1[i]["path"])  # files1[i]의 절대경로
+                    print(files1[2]["path"])# files2[i]의 절대경로
+                    print("두 파일은 일치합니다.")
+                    pass
